@@ -6,4 +6,4 @@ def items_list(request):
     context = {
         'item': item,
     }
-    return render(request, 'items_list.html', context)
+    return render(request, 'home-page.html', context)
