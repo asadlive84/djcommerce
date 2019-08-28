@@ -12,8 +12,11 @@ class ProductPage(TemplateView):
 
 
 urlpatterns =[
-    path('', views.items_list, name='items_list'),
+    path('', views.HomeView.as_view(), name='items_list'),
     path('checkout/', CheckOut.as_view(template_name='checkout-page.html'), name="checkout"),
     #path'checkout/', CheckOut.as_view(template_name='checkout-page.html'), name="checkout"),
-    path('product/', ProductPage.as_view(template_name='product-page.html'), name="product"),
+    path('product/<slug>/', views.ItemDetailView.as_view(), name="product"),
+    path('add-to-cart/<slug>/', views.add_to_cart, name="add-to-cart"),
+    path('remove-to-cart/<slug>/', views.remove_to_cart, name="remove-to-cart"),
+
 ]
