@@ -1,5 +1,5 @@
 {% load static %}
-
+{% load cart_item_count %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -74,25 +74,51 @@
               <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href="#" target="">Product</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect" href="{% url 'core:checkout' %}"
-              target="">Checkout</a>
-          </li>
+{#          <li class="nav-item">#}
+{#            <a class="nav-link waves-effect" href="#" target="">Product</a>#}
+{#          </li>#}
+{#          <li class="nav-item">#}
+{#            <a class="nav-link waves-effect" href="{% url 'core:checkout' %}"#}
+{#              target="">Checkout</a>#}
+{#          </li>#}
 
         </ul>
 
         <!-- Right -->
         <ul class="navbar-nav nav-flex-icons">
+           {% if request.user.is_authenticated %}
           <li class="nav-item">
             <a class="nav-link waves-effect">
-              <span class="badge red z-depth-1 mr-1"> 1 </span>
+              <span class="badge red z-depth-1 mr-1"> {{ request.user | cart_item_count }} </span>
               <i class="fas fa-shopping-cart"></i>
               <span class="clearfix d-none d-sm-inline-block"> Cart </span>
             </a>
           </li>
+           <li class="nav-item">
+            <a href="{% url 'account_logout' %}" class="nav-link waves-effect">
+              <span class="badge red z-depth-1 mr-1"> Logout </span>
+
+
+            </a>
+          </li>
+            {% else %}
+
+            <li class="nav-item">
+            <a href="{% url 'account_login' %}" class="nav-link waves-effect">
+              <span class="badge red z-depth-1 mr-1"> Login </span>
+
+
+            </a>
+          </li>
+
+               <li class="nav-item">
+            <a href="{% url 'account_signup' %}" class="nav-link waves-effect">
+              <span class="badge red z-depth-1 mr-1"> Signup </span>
+
+
+            </a>
+          </li>
+             {% endif %}
           <li class="nav-item">
             <a href="https://www.facebook.com/mdbootstrap" class="nav-link waves-effect" target="_blank">
               <i class="fab fa-facebook-f"></i>
@@ -104,9 +130,9 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="nav-link border border-light rounded waves-effect"
+            <a href="https://github.com/asadlive84/djcommerce/" class="nav-link border border-light rounded waves-effect"
               target="_blank">
-              <i class="fab fa-github mr-2"></i>MDB GitHub
+              <i class="fab fa-github mr-2"></i>GitHub
             </a>
           </li>
         </ul>
@@ -159,18 +185,7 @@
   <!--Footer-->
   <footer class="page-footer text-center font-small mt-4 wow fadeIn">
 
-    <!--Call to action-->
-    <div class="pt-4">
-      <a class="btn btn-outline-white" href="https://mdbootstrap.com/docs/jquery/getting-started/download/" target="_blank"
-        role="button">Download MDB
-        <i class="fas fa-download ml-2"></i>
-      </a>
-      <a class="btn btn-outline-white" href="https://mdbootstrap.com/education/bootstrap/" target="_blank" role="button">Start
-        free tutorial
-        <i class="fas fa-graduation-cap ml-2"></i>
-      </a>
-    </div>
-    <!--/.Call to action-->
+
 
     <hr class="my-4">
 

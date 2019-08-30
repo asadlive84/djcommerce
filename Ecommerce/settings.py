@@ -132,6 +132,9 @@ INTERNAL_IPS = [
     # ...
 ]
 
+
+LOGIN_REDIRECT_URL = '/'
+
 AUTHENTICATION_BACKENDS = (
 
     # Needed to login by username in Django admin, regardless of `allauth`
