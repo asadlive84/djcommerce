@@ -2,57 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ed8f6704-214b-4598-8a9b-d286de764882" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/requriments.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/account_inactive.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/email.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/email/email_confirmation_message.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/email/email_confirmation_signup_message.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/email/email_confirmation_signup_subject.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/email/email_confirmation_subject.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/email/password_reset_key_message.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/email/password_reset_key_subject.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/email_confirm.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/logout.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/messages/cannot_delete_primary_email.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/messages/email_confirmation_sent.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/messages/email_confirmed.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/messages/email_deleted.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/messages/logged_in.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/messages/logged_out.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/messages/password_changed.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/messages/password_set.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/messages/primary_email_set.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/messages/unverified_primary_email.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/password_change.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/password_reset.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/password_reset_done.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/password_reset_from_key.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/password_reset_from_key_done.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/password_set.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/signup.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/signup_closed.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/snippets/already_logged_in.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/verification_sent.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/account/verified_email_required.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/openid/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/openid/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/socialaccount/authentication_error.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/socialaccount/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/socialaccount/connections.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/socialaccount/login_cancelled.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/socialaccount/messages/account_connected.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/socialaccount/messages/account_connected_other.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/socialaccount/messages/account_connected_updated.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/socialaccount/messages/account_disconnected.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/socialaccount/signup.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/socialaccount/snippets/login_extra.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/socialaccount/snippets/provider_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/templates/base.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/templates/tests/test_403_csrf.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Ecommerce/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Ecommerce/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requriments.txt" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -143,7 +94,7 @@
       <workItem from="1566972067897" duration="5208000" />
       <workItem from="1566998809761" duration="13029000" />
       <workItem from="1567022028633" duration="68000" />
-      <workItem from="1567140637265" duration="5375000" />
+      <workItem from="1567140637265" duration="5624000" />
     </task>
     <task id="LOCAL-00001" summary="paginate, basic cart item count">
       <created>1567143892101</created>
@@ -152,7 +103,21 @@
       <option name="project" value="LOCAL" />
       <updated>1567143892101</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="log in page ui design with crispy forms">
+      <created>1567146108552</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1567146108552</updated>
+    </task>
+    <task id="LOCAL-00003" summary="fix requirements.txt">
+      <created>1567146264105</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1567146264105</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -174,6 +139,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="paginate, basic cart item count" />
-    <option name="LAST_COMMIT_MESSAGE" value="paginate, basic cart item count" />
+    <MESSAGE value="log in page ui design with crispy forms" />
+    <MESSAGE value="fix requirements.txt" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix requirements.txt" />
   </component>
 </project>
