@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+  <!--Main layout-->
+  <main>
+      <div class="container">
+          <div class="table-responsive text-nowrap">
+              <h2>Order Summary</h2>
+              <table class="table">
+                  <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Item Title</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Total Item Price</th>
+
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for orderitem in object.items.all %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>
+                            <a href="{{orderitem.item.get_absolute_url }}">{{ orderitem.item.title }}</a>
+                        </td>
+                        <td>{{ orderitem.item.price }}</td>
+                        <td>{{ orderitem.quantity }}</td>
+                        <td>
+                            {% if orderitem.item.discount_price %}
+                            $ {{ orderitem.get_discount_price }}
+                             <del>$ {{ orderitem.get_total_price }}</del>
+                                <span class="badge badge-pill badge-success">Saving ${{orderitem.get_amount_save}}</span>
+                            {% else %}
+                             $ {{ orderitem.get_total_price }}
+                            {% endif %}
+                        </td>
+                    </tr>
+                   {% empty %}
+                      <tr>
+                        <td>Your cart in empty!</td>
+                      </tr>
+                  {% endfor %}
+                  <tr>
+                      <td colspan="4"><b>Order Total</b></td>
+                      <td>${{ object.get_total }}</td>
+                  </tr>
+                  <tr>
+
+                      <td colspan="5">
+                          <a href="/" class="btn btn-primary float-right ml-2" href="">Continue Shopping</a>
+                          <a href="/checkout/" class="btn btn-warning float-right" href="">Proceed to checkout</a>
+                      </td>
+                  </tr>
+                
+
+                
+                </tbody>
+              </table>
+          </div>
+      </div>
+  </main>
+  <!--Main layout-->
+
+
+
+{% endblock %}

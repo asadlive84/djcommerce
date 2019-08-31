@@ -1,7 +1,10 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView
 from django.utils import timezone
 from django.contrib import messages
+from django.views.generic.base import View
+from django.core import exceptions
 from core.models import Item, OrderItem, Order
 
 
@@ -17,6 +20,20 @@ class HomeView(ListView):
     model = Item
     paginate_by = 8
     template_name = 'home-page.html'
+
+
+class OrderSummaryView(LoginRequiredMixin, View):
+    def get(self, *args, **kwargs):
+        try:
+            order = Order.objects.get(user=self.request.user, ordered=False)
+            context ={
+                'object': order,
+            }
+            return render(self.request, 'order_summary.html', context)
+        except exceptions.ObjectDoesNotExist:
+            messages.error(self.request, "You do not have any active order!")
+            return redirect("/")
+
 
 
 class ItemDetailView(DetailView):
@@ -65,7 +82,7 @@ def remove_to_cart(request, slug):
         order = order_qs[0]
         print(order)
         if order.items.filter(item__slug=item.slug).exists():
-            order_item= OrderItem.objects.get_or_create(item=item, user=request.user, ordered=False)[0]
+            order_item = OrderItem.objects.get_or_create(item=item, user=request.user, ordered=False)[0]
             order.items.remove(order_item)
             messages.info(request, "This product was removed from your cart")
         else:
