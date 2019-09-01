@@ -26,7 +26,14 @@
                             <a href="{{orderitem.item.get_absolute_url }}">{{ orderitem.item.title }}</a>
                         </td>
                         <td>{{ orderitem.item.price }}</td>
-                        <td>{{ orderitem.quantity }}</td>
+
+                        <td>
+                            <a href="{% url 'core:remove_single_product_from_cart' orderitem.item.slug %}"><i class="fas fa-minus mr-2"></i></a>
+                            {{ orderitem.quantity }}
+                            <a href="{% url 'core:add_single_product_from_cart' orderitem.item.slug %}"><i class="fas fa-plus ml-2"></i></a>
+                        </td>
+
+
                         <td>
                             {% if orderitem.item.discount_price %}
                             $ {{ orderitem.get_discount_price }}
@@ -36,12 +43,21 @@
                              $ {{ orderitem.get_total_price }}
                             {% endif %}
                         </td>
+
+                        <td>
+                             <a style="color:red" href="{% url 'core:remove-to-cart' orderitem.item.slug %}">
+                                <i class="fas fa-trash-alt"></i>
+                            </a>
+                        </td>
                     </tr>
                    {% empty %}
                       <tr>
                         <td>Your cart in empty!</td>
                       </tr>
                   {% endfor %}
+                  {% if object.get_total %}
+
+                  
                   <tr>
                       <td colspan="4"><b>Order Total</b></td>
                       <td>${{ object.get_total }}</td>
@@ -50,9 +66,13 @@
 
                       <td colspan="5">
                           <a href="/" class="btn btn-primary float-right ml-2" href="">Continue Shopping</a>
+                      {{ object.items }}
+
                           <a href="/checkout/" class="btn btn-warning float-right" href="">Proceed to checkout</a>
+
                       </td>
                   </tr>
+                  {% endif %}
                 
 
                 

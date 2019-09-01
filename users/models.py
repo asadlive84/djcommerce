@@ -1,8 +1,10 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, UserManager
 
+
 class CustomUserManger(UserManager):
     pass
 
+
 class CustomUser(AbstractUser):
-    obj = CustomUserManger
+    obj = CustomUserManger()
