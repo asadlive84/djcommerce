@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.shortcuts import redirect
 from django.urls import reverse
+from django_countries.fields import CountryField
 
 CATEGORY_CHOICES = (
     ('S', 'Shirt'),
@@ -83,3 +84,14 @@ class Order(models.Model):
         for order_item in self.items.all():
             total += order_item.get_final_price()
         return total
+
+
+class BillingAddress(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    street_address = models.CharField(max_length=100)
+    apartment_address = models.CharField(max_length=100)
+    country = CountryField(multiple=True)
+    zip = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.user.username

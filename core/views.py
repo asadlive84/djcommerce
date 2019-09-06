@@ -7,6 +7,7 @@ from django.contrib import messages
 from django.views.generic.base import View
 from django.core import exceptions
 from core.models import Item, OrderItem, Order
+from core.forms import CheckoutForm
 
 
 def items_list(request):
@@ -23,18 +24,38 @@ class HomeView(ListView):
     template_name = 'home-page.html'
 
 
+class CheckOutView(View):
+
+    def get(self, *args, **kwargs):
+        form = CheckoutForm()
+        context = {
+            'form': form,
+        }
+
+        return render(self.request, "checkout-page.html", context)
+
+    def post(self, *args, **kwargs):
+        form = CheckoutForm(self.request.POST or None)
+        print(self.request.POST)
+        if form.is_valid():
+            print(form.cleaned_data)
+            return redirect("core:checkout")
+
+        messages.warning(self.request, "Failed checkout!")
+        return redirect("core:checkout")
+
+
 class OrderSummaryView(LoginRequiredMixin, View):
     def get(self, *args, **kwargs):
         try:
             order = Order.objects.get(user=self.request.user, ordered=False)
-            context ={
+            context = {
                 'object': order,
             }
             return render(self.request, 'order_summary.html', context)
         except exceptions.ObjectDoesNotExist:
             messages.error(self.request, "You do not have any active order!")
             return redirect("/")
-
 
 
 class ItemDetailView(DetailView):
@@ -48,6 +69,7 @@ def home(request):
         'items': items,
     }
     return render(request, 'home-page.html', context)
+
 
 @login_required
 def add_to_cart(request, slug):
@@ -86,7 +108,7 @@ def remove_to_cart(request, slug):
         if order.items.filter(item__slug=item.slug).exists():
             order_item = OrderItem.objects.get_or_create(item=item, user=request.user, ordered=False)[0]
             order.items.remove(order_item)
-            #order_item.quantity = 0
+            # order_item.quantity = 0
             messages.info(request, "This product was removed from your cart")
             return redirect('core:order-summary')
         else:
@@ -97,6 +119,7 @@ def remove_to_cart(request, slug):
         return redirect('core:product', slug=slug)
 
     return redirect("core:product", slug=slug)
+
 
 @login_required
 def remove_single_product_from_cart(request, slug):
