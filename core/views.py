@@ -6,7 +6,7 @@ from django.utils import timezone
 from django.contrib import messages
 from django.views.generic.base import View
 from django.core import exceptions
-from core.models import Item, OrderItem, Order
+from core.models import Item, OrderItem, Order, BillingAddress
 from core.forms import CheckoutForm
 
 
@@ -36,13 +36,47 @@ class CheckOutView(View):
 
     def post(self, *args, **kwargs):
         form = CheckoutForm(self.request.POST or None)
-        print(self.request.POST)
-        if form.is_valid():
-            print(form.cleaned_data)
+
+        try:
+            order = Order.objects.get(user=self.request.user, ordered=False)
+
+            if form.is_valid():
+                street_address = form.cleaned_data.get('street_address')
+                apartment_address = form.cleaned_data.get('apartment_address')
+                country = form.cleaned_data.get('country')
+                zip = form.cleaned_data.get('zip')
+                # same_shipping_address = form.cleaned_data.get('same_shipping_address')
+                # save_info = form.cleaned_data.get('save_info')
+                payment_options = form.cleaned_data.get('payment_options')
+
+                billing_address = BillingAddress(
+                    user=self.request.user,
+                    street_address=street_address,
+                    apartment_address=apartment_address,
+                    country=country,
+                    zip=zip,
+                    # save_info=save_info,
+                    # same_shipping_address=same_shipping_address,
+                    # payment_options=payment_options,
+
+                )
+                billing_address.save()
+
+                order.billing_address=billing_address
+                order.save()
+
+                return redirect("core:checkout")
+
+            messages.warning(self.request, "Failed checkout!")
             return redirect("core:checkout")
 
-        messages.warning(self.request, "Failed checkout!")
-        return redirect("core:checkout")
+        except exceptions.ObjectDoesNotExist:
+            messages.error(self.request, "You do not have any active order!")
+            return redirect("core:order-summary")
+
+
+
+
 
 
 class OrderSummaryView(LoginRequiredMixin, View):
