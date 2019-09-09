@@ -148,6 +148,9 @@ AUTHENTICATION_BACKENDS = (
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+STRIPE_PUBLIC_KEY = ''
+STRIPE_SECRET_KEY = "sk_test_4eC39HqLyjWDarjtT1zdp7dc"
+
 # for image show
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
