@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'django.contrib.sites', #added for allauth this app this is important
+    'django.contrib.sites',  # added for allauth this app this is important
     'crispy_forms',
 ]
 SITE_ID = 1
@@ -134,7 +134,6 @@ INTERNAL_IPS = [
     # ...
 ]
 
-
 LOGIN_REDIRECT_URL = '/'
 
 AUTHENTICATION_BACKENDS = (
@@ -147,5 +146,8 @@ AUTHENTICATION_BACKENDS = (
 
 )
 
-
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# for image show
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
